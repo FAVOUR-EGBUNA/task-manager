@@ -7,19 +7,19 @@ interface Props {
 }
 
 const categoryStyles: Record<string, string> = {
-  Work: "bg-blue-100 text-blue-600",
-  Personal: "bg-green-100 text-green-600",
-  Urgent: "bg-red-100 text-red-600",
+  Work: "bg-blue-900 text-blue-300",
+  Personal: "bg-purple-900 text-purple-300",
+  Urgent: "bg-red-900 text-red-300",
 };
 
 const TaskCard = ({ task, onDelete, onToggle }: Props) => {
   return (
     <div
-      className={`bg-white rounded-2xl shadow p-5 border-l-4 ${task.completed ? "border-green-400 opacity-60" : "border-blue-400"}`}
+      className={`bg-zinc-900 border rounded-2xl p-5 transition ${task.completed ? "border-lime-400 opacity-50" : "border-zinc-700"}`}
     >
       <div className="flex justify-between items-center mb-2">
         <h3
-          className={`font-bold text-lg ${task.completed ? "line-through text-gray-400" : "text-gray-700"}`}
+          className={`font-bold text-lg ${task.completed ? "line-through text-zinc-500" : "text-white"}`}
         >
           {task.title}
         </h3>
@@ -29,8 +29,8 @@ const TaskCard = ({ task, onDelete, onToggle }: Props) => {
           {task.category}
         </span>
       </div>
-      <p className="text-sm text-gray-500 mb-2">{task.description}</p>
-      <p className="text-xs text-gray-400 mb-4">
+      <p className="text-sm text-zinc-400 mb-2">{task.description}</p>
+      <p className="text-xs text-zinc-500 mb-4">
         Due: {new Date(task.dueDate).toLocaleDateString()}
       </p>
       <div className="flex items-center gap-3">
@@ -38,14 +38,14 @@ const TaskCard = ({ task, onDelete, onToggle }: Props) => {
           type="checkbox"
           checked={task.completed}
           onChange={() => onToggle(task._id, !task.completed)}
-          className="w-4 h-4 accent-blue-500 cursor-pointer"
+          className="w-4 h-4 accent-lime-400 cursor-pointer"
         />
-        <label className="text-sm text-gray-500">
+        <label className="text-sm text-zinc-400">
           {task.completed ? "Completed" : "Mark Complete"}
         </label>
         <button
           onClick={() => onDelete(task._id)}
-          className="ml-auto bg-red-500 hover:bg-red-600 text-white text-xs px-4 py-1.5 rounded-lg transition"
+          className="ml-auto bg-red-600 hover:bg-red-500 text-white text-xs px-4 py-1.5 rounded-lg transition"
         >
           Delete
         </button>

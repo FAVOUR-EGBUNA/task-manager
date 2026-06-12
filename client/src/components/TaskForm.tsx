@@ -40,34 +40,34 @@ const TaskForm = ({ onTaskCreated }: Props) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white rounded-2xl shadow p-6 mb-8 flex flex-col gap-4"
+      className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 mb-8 flex flex-col gap-4"
     >
-      <h2 className="text-xl font-bold text-gray-700">Add New Task</h2>
+      <h2 className="text-lg font-bold text-lime-400">Add New Task</h2>
       <input
         type="text"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="bg-zinc-800 border border-zinc-600 text-zinc-100 placeholder-zinc-500 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-lime-400"
       />
       <textarea
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        className="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none min-h-[80px]"
+        className="bg-zinc-800 border border-zinc-600 text-zinc-100 placeholder-zinc-500 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-lime-400 resize-none min-h-[80px]"
       />
       <input
         type="date"
         value={dueDate}
         onChange={(e) => setDueDate(e.target.value)}
-        className="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="bg-zinc-800 border border-zinc-600 text-zinc-100 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-lime-400"
       />
       <select
         value={category}
         onChange={(e) =>
           setCategory(e.target.value as "Work" | "Personal" | "Urgent")
         }
-        className="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="bg-zinc-800 border border-zinc-600 text-zinc-100 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-lime-400"
       >
         <option value="Work">Work</option>
         <option value="Personal">Personal</option>
@@ -75,7 +75,7 @@ const TaskForm = ({ onTaskCreated }: Props) => {
       </select>
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg transition"
+        className="bg-lime-400 hover:bg-lime-300 text-zinc-900 font-bold py-2 rounded-lg transition"
       >
         Add Task
       </button>

@@ -19,16 +19,18 @@ A full-stack MERN application for managing personal tasks with categories, built
 ## Project Structure
 
 task-manager/
-├── client/   # React frontend
-└── server/   # Express backend
+├── client/ # React frontend
+└── server/ # Express backend
 
 ## Setup Instructions
 
 ### Prerequisites
+
 - Node.js installed
 - MongoDB Atlas account
 
 ### Backend Setup
+
 ```bash
 cd server
 npm install
@@ -40,11 +42,13 @@ PORT=5000
 MONGO_URI=your_mongodb_atlas_connection_string
 
 Then run:
+
 ```bash
 npm run dev
 ```
 
 ### Frontend Setup
+
 ```bash
 cd client
 npm install
@@ -59,5 +63,3 @@ Open your browser at `http://localhost:5173`
 - No edit functionality for existing tasks
 
 Save with Ctrl + S.
-
-

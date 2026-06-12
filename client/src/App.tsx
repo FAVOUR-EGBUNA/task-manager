@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import type { Task } from "./types/task";
-import { getTasks, createTask, deleteTask, updateTask } from "./api/task";
-import TaskForm from "./components/TaskForm";
-import TaskCard from "./components/TaskCard";
+import { useState, useEffect } from 'react';
+import type { Task } from './types/task';
+import { getTasks, createTask, deleteTask, updateTask } from './api/task';
+import TaskForm from './components/TaskForm';
+import TaskCard from './components/TaskCard';
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [categoryFilter, setCategoryFilter] = useState<string>("All");
-  const [statusFilter, setStatusFilter] = useState<string>("All");
+  const [categoryFilter, setCategoryFilter] = useState<string>('All');
+  const [statusFilter, setStatusFilter] = useState<string>('All');
 
   useEffect(() => {
     fetchTasks();
@@ -18,7 +18,7 @@ function App() {
     setTasks(data);
   };
 
-  const handleCreate = async (task: Omit<Task, "_id">) => {
+  const handleCreate = async (task: Omit<Task, '_id'>) => {
     const newTask = await createTask(task);
     setTasks([...tasks, newTask]);
   };
@@ -34,21 +34,23 @@ function App() {
   };
 
   const filteredTasks = tasks.filter((task) => {
-    const categoryMatch =
-      categoryFilter === "All" || task.category === categoryFilter;
+    const categoryMatch = categoryFilter === 'All' || task.category === categoryFilter;
     const statusMatch =
-      statusFilter === "All" ||
-      (statusFilter === "Completed" && task.completed) ||
-      (statusFilter === "Pending" && !task.completed);
+      statusFilter === 'All' ||
+      (statusFilter === 'Completed' && task.completed) ||
+      (statusFilter === 'Pending' && !task.completed);
     return categoryMatch && statusMatch;
   });
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-4">
+    <div className="min-h-screen bg-zinc-950 py-10 px-4">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
-          Personal Task Manager
-        </h1>
+        <div className="mb-10 text-center">
+          <h1 className="text-4xl font-extrabold text-white tracking-tight">
+            Task <span className="text-lime-400">Manager</span>
+          </h1>
+          <p className="text-zinc-400 mt-2 text-sm">Stay organised. Get things done.</p>
+        </div>
 
         <TaskForm onTaskCreated={handleCreate} />
 
@@ -56,7 +58,7 @@ function App() {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="flex-1 bg-zinc-800 border border-zinc-700 text-zinc-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-lime-400"
           >
             <option value="All">All Categories</option>
             <option value="Work">Work</option>
@@ -67,7 +69,7 @@ function App() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="flex-1 bg-zinc-800 border border-zinc-700 text-zinc-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-lime-400"
           >
             <option value="All">All Status</option>
             <option value="Completed">Completed</option>
@@ -77,9 +79,7 @@ function App() {
 
         <div className="flex flex-col gap-4">
           {filteredTasks.length === 0 ? (
-            <p className="text-center text-gray-400 mt-10 text-lg">
-              No tasks found.
-            </p>
+            <p className="text-center text-zinc-500 mt-10 text-lg">No tasks found.</p>
           ) : (
             filteredTasks.map((task) => (
               <TaskCard
