@@ -33,6 +33,11 @@ function App() {
     setTasks(tasks.map((t) => (t._id === id ? updated : t)));
   };
 
+  const handleEdit = async (id: string, updated: Partial<Task>) => {
+    const result = await updateTask(id, updated);
+    setTasks(tasks.map((t) => (t._id === id ? result : t)));
+  };
+
   const filteredTasks = tasks.filter((task) => {
     const categoryMatch = categoryFilter === 'All' || task.category === categoryFilter;
     const statusMatch =
@@ -87,6 +92,7 @@ function App() {
                 task={task}
                 onDelete={handleDelete}
                 onToggle={handleToggle}
+                onEdit={handleEdit}
               />
             ))
           )}
