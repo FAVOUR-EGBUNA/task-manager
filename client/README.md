@@ -60,6 +60,6 @@ Open your browser at `http://localhost:5173`
 ## Known Issues
 
 - No authentication (single user app)
-- No edit functionality for existing tasks
+
 
 Save with Ctrl + S.
